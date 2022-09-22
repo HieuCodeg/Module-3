@@ -1,26 +1,26 @@
 CREATE DATABASE QuanLyBanHang;
 USE QuanLyBanHang;
 CREATE TABLE Customer(
-	cID VARCHAR(20) PRIMARY KEY,
-    cName VARCHAR(50),
-    cAge INT
+	cID int PRIMARY KEY,
+    cName VARCHAR(25),
+    cAge tinyINT
 );
 CREATE TABLE Oder(
-	oID VARCHAR(20) PRIMARY KEY,
-    cID VARCHAR(20),
-    oDate Date,
+	oID int PRIMARY KEY,
+    cID int,
+    oDate Datetime,
     oTotalPrice INT,
     FOREIGN KEY (cID) REFERENCES Customer(cID)
 );
 CREATE TABLE Product(
-	pID VARCHAR(20) PRIMARY KEY,
-	pName VARCHAR(20),
+	pID int PRIMARY KEY,
+	pName VARCHAR(25),
     pPrice INT
 );
 CREATE TABLE OderDetail(
-	oID VARCHAR(20),
-    pID VARCHAR(20),
-    odQTY VARCHAR(50),
+	oID int,
+    pID int,
+    odQTY int,
     PRIMARY KEY (oID, pID),
     FOREIGN KEY (oID) REFERENCES Oder(oID),
     FOREIGN KEY (pID) REFERENCES Product(pID)
