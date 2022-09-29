@@ -60,3 +60,35 @@ delimiter ;
 
 call addProduct('SP_06', 'Dien thoai', 30000, 39, 'Dien thoai TQ', 1);
 select * from products;
+
+delimiter //
+create procedure editProduct(
+in pid int,
+in pCode  varchar(15),
+in pName varchar(50),
+in pPrice int,
+in pAmount int,
+in pDescription text,
+in pStatus int)
+begin
+update products
+set productCode = pCode,
+productName = pName,
+ productPrice = pPrice, 
+ productAmount = pAmount, 
+ productDescription = pDescription, 
+ productStatus = pStatus
+where id = pid;
+end //
+delimiter ;
+
+call editProduct(6,'SP_07','May ui',30000,30,'Hang dom',0);
+
+delimiter //
+create procedure deleteProduct(in pid int)
+begin
+	delete from products
+    where id = pid;
+end //
+delimiter ;
+call deleteProduct(7);
