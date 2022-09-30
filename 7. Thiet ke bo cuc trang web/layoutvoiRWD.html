@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fontawesome-free-6.1.2-web/css/all.min.css">
+    <title>Tao layout RWD</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .col-1 {
+            width: 8.33%;
+        }
+
+        .col-2 {
+            width: 16.66%;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .col-4 {
+            width: 33.33%;
+        }
+
+        .col-5 {
+            width: 41.66%;
+        }
+
+        .col-6 {
+            width: 50%;
+        }
+
+        .col-7 {
+            width: 58.33%;
+        }
+
+        .col-8 {
+            width: 66.66%;
+        }
+
+        .col-9 {
+            width: 75%;
+        }
+
+        .col-10 {
+            width: 83.33%;
+        }
+
+        .col-11 {
+            width: 91.66%;
+        }
+
+        .col-12 {
+            width: 100%;
+        }
+
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+        }
+
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+        }
+
+        @media only screen and (min-width: 600px) {
+
+            /* For tablets: */
+            .col-m-1 {
+                width: 8.33%;
+            }
+
+            .col-m-2 {
+                width: 16.66%;
+            }
+
+            .col-m-3 {
+                width: 25%;
+            }
+
+            .col-m-4 {
+                width: 33.33%;
+            }
+
+            .col-m-5 {
+                width: 41.66%;
+            }
+
+            .col-m-6 {
+                width: 50%;
+            }
+
+            .col-m-7 {
+                width: 58.33%;
+            }
+
+            .col-m-8 {
+                width: 66.66%;
+            }
+
+            .col-m-9 {
+                width: 75%;
+            }
+
+            .col-m-10 {
+                width: 83.33%;
+            }
+
+            .col-m-11 {
+                width: 91.66%;
+            }
+
+            .col-m-12 {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+
+            /* For desktop: */
+            .col-1 {
+                width: 8.33%;
+            }
+
+            .col-2 {
+                width: 16.66%;
+            }
+
+            .col-3 {
+                width: 25%;
+            }
+
+            .col-4 {
+                width: 33.33%;
+            }
+
+            .col-5 {
+                width: 41.66%;
+            }
+
+            .col-6 {
+                width: 50%;
+            }
+
+            .col-7 {
+                width: 58.33%;
+            }
+
+            .col-8 {
+                width: 66.66%;
+            }
+
+            .col-9 {
+                width: 75%;
+            }
+
+            .col-10 {
+                width: 83.33%;
+            }
+
+            .col-11 {
+                width: 91.66%;
+            }
+
+            .col-12 {
+                width: 100%;
+            }
+        }
+
+        .header {
+            display: flex;
+            height: 60px;
+            background-color: #222222;
+        }
+
+        .text {
+
+            color: #9d9d9d;
+            cursor: pointer;
+            padding: 18px 10px 10px 10px;
+        }
+
+        .text:hover {
+            color: white;
+            background-color: #080808;
+        }
+
+        #login {
+            position: absolute;
+            right: 30px;
+            height: 60px;
+        }
+
+        .navbar {
+            height: 600px;
+            padding: 20px;
+            background-color: #f1f1f1;
+
+        }
+
+        .aside {
+            height: 600px;
+            padding: 20px;
+            background-color: #f1f1f1;
+
+        }
+
+        .box {
+            text-align: center;
+            padding-top: 20px;
+            background-color: #fffbfb;
+            margin-bottom: 20px;
+            height: 50px;
+        }
+
+        .selection {}
+
+        .footer {
+            height: 60px;
+            background-color: #555555;
+            text-align: center;
+            padding-top: 5px;
+            color: white;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="text">Logo</div>
+        <div class="text" style=" background-color: #080808; color:#f1f1f1">Home</div>
+        <div class="text">About</div>
+        <div class="text">Projects</div>
+        <div class="text">Contact</div>
+
+        <div class="text" id="login">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            Login
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-3 col-m-3 navbar">
+            <a href="">Link</a> <br>
+            <a href="">Link</a><br>
+            <a href="">Link</a>
+
+        </div>
+        <div class="col-6 col-m-9 selection">
+            <h1>Welcome</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry's
+                standard dummy text ever since the 1500s, when an unknown
+                printer took a galley of type and scrambled it to make a
+                type specimen book. It has survived not only five centuries,
+                but also the leap into electronic typesetting, remaining
+                essentially unchanged. It was popularised in the 1960s with
+                the release of Letraset sheets containing Lorem Ipsum
+                passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem
+                Ipsum.</p>
+            <hr>
+            <h2>Test</h2>
+            <p>Lorem is...</p>
+
+        </div>
+        <div class="col-3 col-m-12 aside">
+            <div class="box">ADS</div>
+            <div class="box">ADS</div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Footer Text</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tao layout voi the HTML5</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 0.9em;
+        }
+
+        header,
+        footer {
+            padding: 10px;
+            color: white;
+            background-color: black;
+        }
+
+
+        section {
+            margin: 5px;
+            padding: 10px;
+            background-color: lightgrey;
+        }
+
+        div {
+            display: flex;
+        }
+
+        article {
+            margin: 5px;
+            padding: 10px;
+            background-color: white;
+        }
+
+        nav ul {
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 5px;
+        }
+
+        aside {
+            background-color: antiquewhite;
+            flex: 1;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Monday Times</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li>News</li>
+            <li>Sports</li>
+            <li>Weather</li>
+        </ul>
+    </nav>
+
+    <div>
+        <section>
+            <h2>News Section</h2>
+            <article>
+                <h2>News Article</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi
+                    condimentum
+                    est nibh, et consectetur tortor feugiat at.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi
+                    condimentum
+                    est nibh, et consectetur tortor feugiat at.</p>
+            </article>
+            <article>
+                <h2>News Article</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi
+                    condimentum
+                    est nibh, et consectetur tortor feugiat at.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi
+                    condimentum
+                    est nibh, et consectetur tortor feugiat at.</p>
+            </article>
+        </section>
+        <aside>
+            <h2>Social links</h2>
+            <ul>
+                <li><a href="">Facebook</a></li>
+                <li><a href="">Zalo</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2014 Monday Times. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

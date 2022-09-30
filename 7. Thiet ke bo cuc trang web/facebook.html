@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fontawesome-free-6.1.2-web/css/all.min.css">
+    <title>Facebook</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+        }
+
+        header {
+            position: fixed;
+            height: 60px;
+            width: 100%;
+            top: 0px;
+            left: 0px;
+            background-color: white;
+            z-index: 10;
+            box-shadow: 0 0 5px 0 #d0d1d2;
+        }
+
+        #fb {
+            color: #0a81ed;
+            font-size: 40px;
+            top: 10px;
+            left: 10px;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        #find {
+            height: 35px;
+            width: 240;
+            border-radius: 20px;
+            padding-left: 40px;
+            position: relative;
+            top: 10px;
+            left: 60px;
+            background-color: #f0f2f5;
+            color: #65676b;
+            border: none;
+        }
+
+        #lup {
+            position: absolute;
+            left: 70px;
+            top: 20px;
+            font-size: 20px;
+            color: #65676b;
+        }
+
+        .licon {
+            position: relative;
+            font-size: 25px;
+            top: 20px;
+            left: 280px;
+            margin-left: 100px;
+            cursor: pointer;
+            color: #65676b;
+        }
+
+        #home {
+            color: #0a81ed;
+        }
+
+        .licon:active {
+            color: #0a81ed;
+        }
+
+        #avata {
+            position: absolute;
+            right: 30px;
+            top: 10px;
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+        #bell {
+            position: absolute;
+            right: 80px;
+            top: 10px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        #mess {
+            position: absolute;
+            right: 120px;
+            top: 10px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        #menu {
+            position: absolute;
+            right: 170px;
+            top: 10px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 50px;
+
+        }
+
+        nav {
+            position: fixed;
+            height: 100%;
+            width: 25%;
+            top: 100px;
+            overflow: scroll;
+        }
+
+
+        section {
+            position: absolute;
+            height: 100%;
+            width: 60%;
+            left: 380px;
+        }
+
+        aside {
+            height: 100%;
+            position: fixed;
+            right: 0px;
+            width: 25%;
+            overflow: scroll;
+        }
+
+        .noidung {
+            position: relative;
+            width: 65%;
+            left: 75px;
+            background-color: white;
+            height: 300px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .menuleft {
+            display: flex;
+            margin-left: 20px;
+            cursor: pointer;
+            padding: 10px;
+            height: 25px;
+        }
+    
+        .menuleft:hover {
+            background-color: #e3e4e6;
+            border-radius: 10px;
+        }
+        .menuicon {
+            font-size: 20px;
+            height: 40px;
+            margin-bottom: 20px;
+        }
+        .name {
+            position:absolute;
+            padding-left: 35px;
+            font-size: 20px;
+        
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <i class="fa-brands fa-facebook" id="fb"></i>
+        <input type="text" value="Tìm kiếm trên Facebook" id="find">
+        <i class="fa-sharp fa-solid fa-magnifying-glass" id="lup"></i>
+
+        <i class="fa-sharp fa-solid fa-house licon" id="home"></i>
+        <i class="fa-sharp fa-solid fa-shop licon"></i>
+        <i class="fa-solid fa-people-group licon"></i>
+
+        <i class="fa-solid fa-bars" id="menu"></i>
+        <i class="fa-brands fa-facebook-messenger" id="mess"></i>
+        <i class="fa-solid fa-bell" id="bell"></i>
+        <i class="fa-solid fa-circle" id="avata"></i>
+
+    </header>
+    <div class="container">
+        <nav>
+            <div class="menuleft" >
+                <i class="fa-solid fa-user-group menuicon"></i>
+               <span class="name">Bạn bè</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-bookmark menuicon"></i>
+               <span class="name">Đã lưu</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-calendar-days menuicon"></i>
+               <span class="name">Sự kiện</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-sharp fa-solid fa-people-group menuicon"></i>
+               <span class="name">Nhóm</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-sharp fa-solid fa-shop menuicon"></i>
+               <span class="name">Marketplace</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-clock-rotate-left menuicon"></i>
+               <span class="name">Kỷ niệm</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-sharp fa-solid fa-circle-arrow-down menuicon"></i>
+               <span class="name">Xem thêm</span>
+            </div>
+            <hr>
+            
+        </nav>
+
+        <section>
+
+            <div class="noidung"> Nội dung</div>
+            <div class="noidung"> Nội dung</div>
+            <div class="noidung"> Nội dung</div>
+            <div class="noidung"> Nội dung</div>
+            <div class="noidung"> Nội dung</div>
+            <div class="noidung"> Nội dung</div>
+            <div class="noidung"> Nội dung</div>
+            <div class="noidung"> Nội dung</div>
+            <div class="noidung"> Nội dung</div>
+            <div class="noidung"> Nội dung</div>
+
+
+        </section>
+        <aside>
+            <h3>Lời mời kết bạn</h3>
+            <i class="fa-solid fa-circle user"></i>
+            <hr>
+            <h3>Sinh nhật</h3>
+            <i class="fa-solid fa-circle user"></i>
+            <hr>
+            <h3>Người liên hệ</h3>
+            <i class="fa-solid fa-circle user"></i>
+            <i class="fa-solid fa-circle user"></i>
+            <hr>
+            <h3>Cuộc trò chuyện nhóm</h3>
+            
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van A</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van B</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van C</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van D</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van E</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van F</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van G</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van H</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van D</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van E</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van F</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van G</span>
+            </div>
+            <div class="menuleft">
+                <i class="fa-solid fa-circle user menuicon"></i>
+               <span class="name">Nguyen Van H</span>
+            </div>
+            
+        </aside>
+    </div>
+</body>
+
+</html>

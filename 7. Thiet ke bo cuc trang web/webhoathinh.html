@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fontawesome-free-6.1.2-web/css/all.min.css">
+    <title>Hoat hinh</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .col-1 {
+            width: 8.33%;
+        }
+
+        .col-2 {
+            width: 16.66%;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .col-4 {
+            width: 33.33%;
+        }
+
+        .col-5 {
+            width: 41.66%;
+        }
+
+        .col-6 {
+            width: 50%;
+        }
+
+        .col-7 {
+            width: 58.33%;
+        }
+
+        .col-8 {
+            width: 66.66%;
+        }
+
+        .col-9 {
+            width: 75%;
+        }
+
+        .col-10 {
+            width: 83.33%;
+        }
+
+        .col-11 {
+            width: 91.66%;
+        }
+
+        .col-12 {
+            width: 100%;
+        }
+
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+        }
+
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+        }
+
+        @media only screen and (min-width: 600px) {
+
+            /* For tablets: */
+            .col-m-1 {
+                width: 8.33%;
+            }
+
+            .col-m-2 {
+                width: 16.66%;
+            }
+
+            .col-m-3 {
+                width: 25%;
+            }
+
+            .col-m-4 {
+                width: 33.33%;
+            }
+
+            .col-m-5 {
+                width: 41.66%;
+            }
+
+            .col-m-6 {
+                width: 50%;
+            }
+
+            .col-m-7 {
+                width: 58.33%;
+            }
+
+            .col-m-8 {
+                width: 66.66%;
+            }
+
+            .col-m-9 {
+                width: 75%;
+            }
+
+            .col-m-10 {
+                width: 83.33%;
+            }
+
+            .col-m-11 {
+                width: 91.66%;
+            }
+
+            .col-m-12 {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+
+            /* For desktop: */
+            .col-1 {
+                width: 8.33%;
+            }
+
+            .col-2 {
+                width: 16.66%;
+            }
+
+            .col-3 {
+                width: 25%;
+            }
+
+            .col-4 {
+                width: 33.33%;
+            }
+
+            .col-5 {
+                width: 41.66%;
+            }
+
+            .col-6 {
+                width: 50%;
+            }
+
+            .col-7 {
+                width: 58.33%;
+            }
+
+            .col-8 {
+                width: 66.66%;
+            }
+
+            .col-9 {
+                width: 75%;
+            }
+
+            .col-10 {
+                width: 83.33%;
+            }
+
+            .col-11 {
+                width: 91.66%;
+            }
+
+            .col-12 {
+                width: 100%;
+            }
+        }
+
+        .header {
+            display: flex;
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 60px;
+            background-color: #222222;
+        }
+
+        .navbar {
+            height: 600px;
+            padding: 20px;
+            background-color: #f1f1f1;
+
+        }
+
+
+        .selection {}
+
+        .footer {
+            position: absolute;
+            height: 60px;
+            background-color: #555555;
+            text-align: center;
+            padding-top: 5px;
+            color: white;
+            clear: both;
+            bottom: 0%;
+            width: 100%;
+           
+        }
+        h2 {
+            color: #f1f1f1;
+            padding-left: 20px;
+        }
+        .row {
+            position: absolute;
+            top: 90px;
+        }
+        .headlink {
+            position: absolute;
+            top: 60px;
+            left: 0%;
+            width: 100%;
+            height: 30px;
+            background-color: #555555;
+            text-align: center;
+            padding-top: 3px;
+        }
+        .headlink a {
+            color: #f1f1f1;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .headlink a:hover {
+            color:burlywood;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="https://tvc360.vn/images/articleCategory/2021/07/06/132700351214397515.png" alt="">
+       <h2>Phim hoạt hình</h2>
+    </div>
+    <div class="headlink">
+        <a href="">Phim hoạt hình   |</a>
+        
+        <a href="">Phim hoạt hình yêu thích  |</a>
+        <a href="">Nhân vật hoạt hình yêu thích  |</a>
+        <a href="">Góp ý</a>
+    </div>
+    <div class="row">
+        <div class="col-3 col-m-3 navbar">
+            <iFrame src="https://mehoathinh.com/phim-chieu-rap" height="500px"></iFrame>
+        </div>
+        <div class="col-9 col-m-12 selection">
+            <h1>Welcome</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry's
+                standard dummy text ever since the 1500s, when an unknown
+                printer took a galley of type and scrambled it to make a
+                type specimen book. It has survived not only five centuries,
+                but also the leap into electronic typesetting, remaining
+                essentially unchanged. It was popularised in the 1960s with
+                the release of Letraset sheets containing Lorem Ipsum
+                passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem
+                Ipsum.</p>
+            <hr>
+            <h2>Test</h2>
+            <p>Lorem is...</p>
+
+        </div>
+    </div>
+    <div class="footer">
+        <p>C@2022 Tao boi NguyenMinhHieu</p>
+    </div>
+</body>
+
+</html>
