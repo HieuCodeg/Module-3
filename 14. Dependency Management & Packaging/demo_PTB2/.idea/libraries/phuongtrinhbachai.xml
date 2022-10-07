@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="phuongtrinhbachai">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../phuongtrinhbachai.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
