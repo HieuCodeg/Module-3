@@ -1,0 +1,10 @@
+{
+  "name": "my website name",
+  "scripts": {
+    "gulp-watch": "gulp watch"
+  },
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-watch": "^5.0.1"
+  }
+}
