@@ -10,6 +10,104 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+/* button*/
+li {
+  margin-left: 5px;
+}
+.zoom {
+  transition: transform .6s;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2);
+}
+.btne {
+  box-sizing: border-box;
+  margin: 0; padding: 0;
+}
+
+:active, :hover, :focus {
+  outline: 0!important;
+  outline-offset: 0;
+}
+.btne::before,
+.btne::after {
+  position: absolute;
+  content: "";
+}
+
+.btn-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 10px auto 35px;
+}
+.btne {
+  position: relative;
+  display: inline-block;
+  width: auto; height: auto;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0px 25px 15px;
+  min-width: 150px;
+}
+.btne span {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  top: 0; left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  transition: 0.3s;
+}
+
+
+/*--- btn-2 ---*/
+.btn-2::before {
+  background-color: rgb(28, 31, 30);
+  transition: 0.3s ease-out;
+}
+.btn-2 span {
+  color: rgb(28, 31, 30);
+  border: 1px solid rgb(28, 31, 30);
+  transition: 0.2s;
+}
+.btn-2 span:hover {
+  color: rgb(255,255,255);
+  transition: 0.2s 0.1s;
+}
+
+/* 6. hover-slide-down */
+.btne.hover-slide-down::before {
+  top: 0; left: 0; right: 0;
+  height: 0%; width: 100%;
+}
+.btne.hover-slide-down:hover::before {
+  height: 100%;
+}
+
+/* 7. hover-slide-up */
+.btne.hover-slide-up::before {
+  bottom: 0; left: 0; right: 0;
+  height: 0%; width: 100%;
+}
+.btne.hover-slide-up:hover::before {
+  height: 100%;
+}
+/*button*/
+table, th, td {
+  text-align: center;
+}
+#btnEdit {
+  margin-right: 10px;
+}
 /*model xan nhan*/
 .btnModel {
   background-color: #04AA6D;
@@ -20,10 +118,16 @@
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+  transition: transform .6s;
 }
 
 .btnModel:hover {
   opacity: 1;
+  -ms-transform: scale(1.05); /* IE 9 */
+  -webkit-transform: scale(1.05); /* Safari 3-8 */
+  transform: scale(1.05);
+
+
 }
 
 /* Float cancel and delete buttons and add an equal width */
@@ -55,6 +159,7 @@
   text-align: center;
   background-color: #f1f1f1;
   width: 400px;
+  height: 200px;
   margin: auto;
 }
 

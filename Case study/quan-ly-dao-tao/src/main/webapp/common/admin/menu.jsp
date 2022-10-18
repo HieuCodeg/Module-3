@@ -25,7 +25,7 @@
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="/admin-home?action=infomation">Thông tin</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Điểm</a>
+                        <a class="nav-link" href="#">Điểm</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -36,8 +36,8 @@
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
 
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="login.html">Thông tin</a>
-                                <a class="nav-link" href="register.html">Giáo án</a>
+                                <a class="nav-link" href="/admin-user">Thông tin</a>
+                                <a class="nav-link" href="#">Giáo án</a>
 
                             </nav>
                 </div>
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
+            <div class="small">Đăng nhập bởi:</div>
            ${USERMODEL.fullName}
         </div>
     </nav>

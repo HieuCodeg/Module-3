@@ -1,6 +1,7 @@
 package com.hieucodeg.quanlydaotao.controller.web;
 
 
+import com.hieucodeg.quanlydaotao.dao.IRodeDAO;
 import com.hieucodeg.quanlydaotao.dao.IUserDAO;
 import com.hieucodeg.quanlydaotao.model.UserModel;
 import com.hieucodeg.quanlydaotao.utils.SessionUtil;
@@ -21,6 +22,14 @@ public class HomeController extends HttpServlet {
     @Inject
     private IUserDAO userDAO;
     ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
+    @Inject
+    IRodeDAO iRodeDAO;
+    @Override
+    public void init() throws ServletException {
+        if(this.getServletContext().getAttribute("listRole")==null) {
+            this.getServletContext().setAttribute("listRole", iRodeDAO.findALL());
+        }
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -93,9 +102,9 @@ public class HomeController extends HttpServlet {
 
         if (model != null) {
             SessionUtil.getInstance().putValue(req, "USERMODEL", model);
-            if (model.getRole().getCode().equals("USER")) {
+            if (iRodeDAO.checkRole(model.getRoleId()).equals("USER")) {
                 resp.sendRedirect(req.getContextPath()+"/trang-chu");
-            } else if (model.getRole().getCode().equals("ADMIN")) {
+            } else if (iRodeDAO.checkRole(model.getRoleId()).equals("ADMIN")) {
                 resp.sendRedirect(req.getContextPath()+"/admin-home");
             }
         } else {

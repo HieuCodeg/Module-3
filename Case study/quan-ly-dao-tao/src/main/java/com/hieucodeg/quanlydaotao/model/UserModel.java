@@ -1,5 +1,7 @@
 package com.hieucodeg.quanlydaotao.model;
 
+import java.sql.Date;
+
 public class UserModel extends AbstractModel<UserModel>{
 
     private String userName;
@@ -7,19 +9,33 @@ public class UserModel extends AbstractModel<UserModel>{
     private String password;
     private int status;
     private Long roleId;
+    private Integer gender;
+    private Date birthday;
+    private Integer idSubject;
 
-    private RoleModel role = new RoleModel();
-
-    public RoleModel getRole() {
-        return role;
+    public Integer getGender() {
+        return gender;
     }
 
-    public void setRole(RoleModel role) {
-        this.role = role;
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 
+    public Date getBirthday() {
+        return birthday;
+    }
 
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
 
+    public Integer getIdSubject() {
+        return idSubject;
+    }
+
+    public void setIdSubject(Integer idSubject) {
+        this.idSubject = idSubject;
+    }
 
     public String getUserName() {
         return userName;

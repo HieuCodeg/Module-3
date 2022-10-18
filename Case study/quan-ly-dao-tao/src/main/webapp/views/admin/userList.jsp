@@ -12,23 +12,23 @@
 
 <html>
 <head>
-    <title>Học sinh</title>
+    <title>Giáo viên</title>
 </head>
 <body>
 <div class="container-fluid px-4">
-    <form action="/admin-home" id="formSubmit" method="post">
+    <form action="/admin-user" id="formSubmit" method="post">
 
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><i class="fa-solid fa-house-chimney"></i> Trang chủ</li>
-            <li class="breadcrumb-item active">  Học sinh</li>
+            <li class="breadcrumb-item active">Giáo viên</li>
         </ol>
 
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                <span style="font-size: large">Danh sách học sinh toàn trường</span>
+                <span style="font-size: large">Danh sách giáo viên toàn trường</span>
                 <span>
-                <a class="btn btn-secondary float-end zoom" data-toggle="tooltip" data-placement="top" title="Thêm mới" href='/admin-home?action=insert' style="background-color: #1b72cf">
+                <a class="btn btn-secondary float-end zoom" data-toggle="tooltip" data-placement="top" title="Thêm mới" href='/admin-user?action=insert' style="background-color: #1b72cf">
                     <i class="fa-solid fa-user-plus" ></i>
                 </a>
                 </span>
@@ -44,7 +44,7 @@
                             %>
                             <c:forEach items="<%= list%>" var="item">
                                 <c:choose>
-                                    <c:when test="${studentModel.visiblePage == item}">
+                                    <c:when test="${userModel.visiblePage == item}">
                                         <option selected value="${item}">${item}</option>
                                     </c:when>
                                     <c:otherwise>
@@ -67,39 +67,40 @@
                         <thead>
                         <tr style="background-color: #c49a68">
                             <th class="slected" onclick="sortTable('id')">ID</th>
-                            <th class="slected" onclick="sortTable('name')">Họ và tên</th>
+                            <th class="slected" onclick="sortTable('fullname')">Họ và tên</th>
                             <th class="slected" onclick="sortTable('gender')">Giới tính</th>
                             <th class="slected" onclick="sortTable('birthday')">Ngày sinh</th>
-                            <th class="slected" onclick="sortTable('phone')">Điện thoại</th>
-                            <th class="slected" onclick="sortTable('grade')">Lớp</th>
-                            <th class="slected" onclick="sortTable('email')">Email</th>
+                            <th class="slected" onclick="sortTable('rodeid')">Quyền truy cập</th>
+                            <th class="slected" onclick="sortTable('subject')">Môn dạy</th>
                             <th>Thao tác</th>
                         </tr>
 
                         </thead>
                         <tbody>
-                        <c:forEach var="student" items="${studentModel.getListResult()}">
+                        <c:forEach var="user" items="${userModel.getListResult()}">
                             <tr>
-                                <td><c:out value="${student.id}"/></td>
-                                <td><c:out value="${student.name}"/></td>
-                                <c:if test="${student.gender == 1}">
+                                <td><c:out value="${user.id}"/></td>
+                                <td><c:out value="${user.fullName}"/></td>
+                                <c:if test="${user.gender == 1}">
                                     <td><c:out value="Nam"/></td>
                                 </c:if>
-                                <c:if test="${student.gender == 0}">
+                                <c:if test="${user.gender == 0}">
                                     <td><c:out value="Nữ"/></td>
                                 </c:if>
-                                <td><c:out value="${student.birthday}"/></td>
-                                <td><c:out value="${student.phoneNumber}"/></td>
-                                <c:forEach items="${applicationScope.listGrade}" var="item">
-                                    <c:if test="${item.getId() == student.getIdGrade()}">
-                                        <td><c:out value="${item.getGrade()}"/></td>
+                                <td><c:out value="${user.birthday}"/></td>
+                                <c:forEach items="${applicationScope.listRole}" var="item">
+                                    <c:if test="${item.getId() == user.getRoleId()}">
+                                        <td><c:out value="${item.getName()}"/></td>
                                     </c:if>
                                 </c:forEach>
-
-                                <td><c:out value="${student.email}"/></td>
+                                <c:forEach items="${applicationScope.listSubject}" var="item">
+                                    <c:if test="${item.getId() == user.getIdSubject()}">
+                                        <td><c:out value="${item.getSubject()}"/></td>
+                                    </c:if>
+                                </c:forEach>
                                 <td>
                                     <a class="btn btn-secondary zoom" data-toggle="tooltip" data-placement="top" id="btnEdit"
-                                       title="Chỉnh sửa" href='/admin-home?action=edit&id=${student.id}' style="background-color: #198754">
+                                       title="Chỉnh sửa" href='/admin-user?action=edit&id=${user.id}' style="background-color: #198754">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <a class="btn btn-secondary  zoom" data-toggle="tooltip" data-placement="top"
@@ -114,7 +115,7 @@
                                             <div class="clearfix">
                                                 <button type="button" onclick="document.getElementById('id01').style.display='none'"
                                                         class="cancelbtn btnModel">Hủy bỏ</button>
-                                                <a href='/admin-home?action=delete&id=${student.id}'>
+                                                <a href='/admin-user?action=delete&id=${user.id}'>
                                                     <button type="button" onclick="document.getElementById('id01').style.display='none'"
                                                             class="deletebtn btnModel">Chấp nhận</button>
                                                 </a>
@@ -129,15 +130,15 @@
                         </tbody>
                     </table>
                     <div class="text-nowrap">
-                        Từ ${(studentModel.getPage() * studentModel.getVisiblePage()) - studentModel.getVisiblePage() + 1}
-                        đến ${(studentModel.getPage() * studentModel.getVisiblePage()) > studentModel.getTotalItem()? studentModel.getTotalItem(): (studentModel.getPage() * studentModel.getVisiblePage())}
-                        trong ${studentModel.getTotalItem()} kết quả
+                        Từ ${(userModel.getPage() * userModel.getVisiblePage()) - userModel.getVisiblePage() + 1}
+                        đến ${(userModel.getPage() * userModel.getVisiblePage()) > userModel.getTotalItem()? userModel.getTotalItem(): (userModel.getPage() * userModel.getVisiblePage())}
+                        trong ${userModel.getTotalItem()} kết quả
                     </div>
                     <ul class="pagination float-end" id="pagination"></ul>
-                    <input type="hidden" value="${studentModel.page}" id="page" name="page"/>
-                    <input type="hidden" value="infomation" id="action" name="action"/>
-                    <input type="hidden" value="${studentModel.getSortName()}" id="sortName" name="sortName"/>
-                    <input type="hidden" value=" ${studentModel.getSortBy()}" id="sortBy" name="sortBy"/>
+                    <input type="hidden" value="${userModel.page}" id="page" name="page"/>
+                    <input type="hidden" value="information" id="action" name="action"/>
+                    <input type="hidden" value="${userModel.getSortName()}" id="sortName" name="sortName"/>
+                    <input type="hidden" value=" ${userModel.getSortBy()}" id="sortBy" name="sortBy"/>
 
                 </div>
             </div>
@@ -164,8 +165,8 @@
 </div>
 
 <script>
-    var totalPages = ${studentModel.totalPage};
-    var currentPage = ${studentModel.page};
+    var totalPages = ${userModel.totalPage};
+    var currentPage = ${userModel.page};
     var limit = $("#selector").val();
     $(function () {
         window.pagObj = $('#pagination').twbsPagination({

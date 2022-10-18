@@ -35,12 +35,12 @@
     </c:if>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><i class="fa-solid fa-house-chimney"></i> Trang chủ</li>
-            <li class="breadcrumb-item active">Học sinh</li>
+            <li class="breadcrumb-item active">  Học sinh</li>
             <c:if test="${studentModel.getId() != null}">
-                <li class="breadcrumb-item active">Chỉnh sửa</li>
+                <li class="breadcrumb-item active">  Chỉnh sửa</li>
             </c:if>
             <c:if test="${studentModel.getId() == null}">
-                <li class="breadcrumb-item active">Thêm mới</li>
+                <li class="breadcrumb-item active">  Thêm mới</li>
             </c:if>
         </ol>
 
@@ -173,12 +173,12 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-sm-10">
+                    <div class="col-sm-10 btn-holder">
                         <c:if test="${studentModel.getId() != null}">
-                            <button type="button" class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'">Cập nhật</button>
+                            <button type="button" class="btne btn-2 hover-slide-down" onclick="document.getElementById('id01').style.display='block'"> <span>Cập nhật</span></button>
                         </c:if>
                         <c:if test="${studentModel.getId() == null}">
-                            <button type="button" class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'">Lưu thông tin</button>
+                            <button type="button" class="btne btn-2 hover-slide-down" onclick="document.getElementById('id01').style.display='block'"><span>Lưu thông tin</span></button>
                         </c:if>
 
                     </div>

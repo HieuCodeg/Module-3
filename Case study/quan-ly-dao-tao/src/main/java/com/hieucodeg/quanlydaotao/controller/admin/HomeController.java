@@ -100,7 +100,7 @@ public class HomeController extends HttpServlet {
     private void loadStudentsInforGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         StudentModel studentModel = new StudentModel();
-        studentModel.setVisiblePage(10);
+        studentModel.setVisiblePage(5);
         studentModel.setPage(1);
         studentModel.setSortName("id");
         studentModel.setSortBy("asc");
