@@ -12,6 +12,15 @@ public class UserModel extends AbstractModel<UserModel>{
     private Integer gender;
     private Date birthday;
     private Integer idSubject;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Integer getGender() {
         return gender;

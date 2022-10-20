@@ -22,7 +22,7 @@ public class UserMapper implements RowMapper<UserModel> {
 			user.setIdSubject(resultSet.getInt("idsubject"));
 			user.setGender(resultSet.getInt("gender"));
 			user.setRoleId(resultSet.getLong("roleid"));
-
+			user.setImage(resultSet.getString("image"));
 			return user;
 		} catch (SQLException e) {
 			return null;

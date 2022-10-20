@@ -41,14 +41,14 @@
 
                             </nav>
                 </div>
-                <div class="sb-sidenav-menu-heading">Addons</div>
-                <a class="nav-link" href="charts.html">
+                <div class="sb-sidenav-menu-heading">Thống kê</div>
+                <a class="nav-link" href="#">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                    Charts
+                    Biểu đồ
                 </a>
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="#">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                    Tables
+                    Bảng điểm
                 </a>
             </div>
         </div>

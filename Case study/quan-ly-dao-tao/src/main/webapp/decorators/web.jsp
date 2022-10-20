@@ -16,6 +16,12 @@
     <link rel="icon" type="image/x-icon" href="<c:url value="/template/web/assets/favicon.ico" /> " />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="<c:url value="/template/web/css/styles.css" />" rel="stylesheet" />
+<%--    caro--%>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="/template/web/carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/template/web/carousel/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="/template/web/carousel/css/style.css">
 </head>
 <body>
     <!-- header -->
@@ -34,6 +40,11 @@
     <script type="text/javascript" src="<c:url value='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' />"></script>
     <!-- Core theme JS-->
     <script type="text/javascript" src="<c:url value='/template/web/js/scripts.js' />"></script>
-
+<%--caro--%>
+    <script src="/template/web/carousel/js/jquery.min.js"></script>
+    <script src="/template/web/carousel/js/popper.js"></script>
+    <script src="/template/web/carousel/js/bootstrap.min.js"></script>
+    <script src="/template/web/carousel/js/owl.carousel.min.js"></script>
+    <script src="/template/web/carousel/js/main.js"></script>
 </body>
 </html>

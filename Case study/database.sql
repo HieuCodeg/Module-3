@@ -161,3 +161,5 @@ UPDATE `education`.`students` SET `name` = 'Nguyễn Thị Hoài Trang',
  ('gvcn10f', 'minhhieu', 'Nguyễn Tri Phương', 1, '1995-06-09', '1', '2', '1');
 SELECT * FROM USER AS U INNER JOIN SUBJECT AS S ON U.IDSUBJECT = S.SID;
 SELECT count(*) FROM user;
+
+SELECT * FROM USER AS U INNER JOIN SUBJECT AS S ON U.IDSUBJECT = S.SID WHERE u.STATUS = 1 AND (id like '%thị%' or fullname like '%thị%' or birthday like '%thị%' or subject like '%thị%');

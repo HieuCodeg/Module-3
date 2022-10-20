@@ -63,15 +63,17 @@
                 </div>
                 <div class="table-responsive">
 
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover" id="mytb">
                         <thead>
                         <tr style="background-color: #c49a68">
                             <th class="slected" onclick="sortTable('id')">ID</th>
+                            <th class="slected" >Ảnh đại diện</th>
                             <th class="slected" onclick="sortTable('fullname')">Họ và tên</th>
-                            <th class="slected" onclick="sortTable('gender')">Giới tính</th>
+                            <th class="slected" >Giới tính</th>
                             <th class="slected" onclick="sortTable('birthday')">Ngày sinh</th>
                             <th class="slected" onclick="sortTable('rodeid')">Quyền truy cập</th>
                             <th class="slected" onclick="sortTable('subject')">Môn dạy</th>
+                            <th class="slected" >Lớp dạy</th>
                             <th>Thao tác</th>
                         </tr>
 
@@ -80,6 +82,12 @@
                         <c:forEach var="user" items="${userModel.getListResult()}">
                             <tr>
                                 <td><c:out value="${user.id}"/></td>
+                                <td>
+                                    <div class="containerImage">
+                                    <img src="${user.getImage()}" alt="avarta" class="imgavar">
+                                    </div>
+
+                                </td>
                                 <td><c:out value="${user.fullName}"/></td>
                                 <c:if test="${user.gender == 1}">
                                     <td><c:out value="Nam"/></td>
@@ -88,6 +96,7 @@
                                     <td><c:out value="Nữ"/></td>
                                 </c:if>
                                 <td><c:out value="${user.birthday}"/></td>
+
                                 <c:forEach items="${applicationScope.listRole}" var="item">
                                     <c:if test="${item.getId() == user.getRoleId()}">
                                         <td><c:out value="${item.getName()}"/></td>
@@ -98,6 +107,18 @@
                                         <td><c:out value="${item.getSubject()}"/></td>
                                     </c:if>
                                 </c:forEach>
+
+                                <td>
+                                    <c:forEach items="${applicationScope.listTeacherClass}" var="item">
+                                        <c:if test="${item.getIdTeacher() == user.getId()}">
+                                            <c:forEach items="${applicationScope.listGrade}" var="gradeModel">
+                                                <c:if test="${gradeModel.getId() == item.getIdClass()}">
+                                                    <p><c:out value="${gradeModel.getGrade()}"/></p>
+                                                </c:if>
+                                            </c:forEach>
+                                        </c:if>
+                                    </c:forEach>
+                                </td>
                                 <td>
                                     <a class="btn btn-secondary zoom" data-toggle="tooltip" data-placement="top" id="btnEdit"
                                        title="Chỉnh sửa" href='/admin-user?action=edit&id=${user.id}' style="background-color: #198754">
