@@ -11,6 +11,7 @@ public interface IUserDAO extends GenericDAO<UserModel> {
 	int getTotalItem(String finderName);
 	UserModel findUserEdit(Long id);
 	void update(UserModel userModel, UserModel userLogin, List<Integer> listIdClass);
+	void update(UserModel userModel, UserModel userLogin);
 	boolean checkUserName(String userName, Long id);
 	void insert(UserModel userModel, UserModel userLogin, List<Integer> listIdClass);
 	void delete(Long id, UserModel userLogin);

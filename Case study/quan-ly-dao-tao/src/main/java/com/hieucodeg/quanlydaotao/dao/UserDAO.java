@@ -9,10 +9,12 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
 	private static final String SELECT_USER = "SELECT * FROM user WHERE username = ? AND password = ? AND status = ?";
 	private static final String SELECT_ALL_USER = "SELECT * FROM USER AS U INNER JOIN SUBJECT AS S ON U.IDSUBJECT = S.SID WHERE u.STATUS = 1";
 	private static final String SELECT_USER_EDIT = "SELECT * FROM USER WHERE  STATUS = 1 && ID = ?";
-	private static final String UPDATE_USER = "UPDATE `education`.`user` SET `username` = ?, `password` = ?, `fullname` = ?, `gender` = ?, `birthday` = ?, `image` = ?, `roleid` = ?, `idSubject` = ?, `modifieddate` = CURRENT_TIMESTAMP, `modifiedby` = ?  WHERE (`id` = ?)";
+	private static final String UPDATE_USER = "UPDATE `education`.`user` SET `username` = ?, `password` = ?, `fullname` = ?, `gender` = ?, `birthday` = ?, `image` = ?, `roleid` = ?, `idSubject` = ?,`idclass` = ?, `modifieddate` = CURRENT_TIMESTAMP, `modifiedby` = ?  WHERE (`id` = ?)";
+	private static final String UPDATE_USER_0 = "UPDATE `education`.`user` SET `username` = ?, `password` = ?, `fullname` = ?, `gender` = ?, `birthday` = ?, `image` = ?, `roleid` = ?, `idSubject` = ?,`idclass` = null, `modifieddate` = CURRENT_TIMESTAMP, `modifiedby` = ?  WHERE (`id` = ?)";
 	private static final String DELETE_TEACHERCLASS = "DELETE FROM `education`.`teacherclass` WHERE (`idteacher` = ?)";
 	private static final String UPDATE_TEACHERCLASS = "INSERT INTO `education`.`teacherclass` (`idteacher`, `idclass`) VALUES (?, ?)";
-	private static final String INSERT_USER = "INSERT INTO `education`.`user` (`username`, `password`, `fullname`, `gender`, `birthday`, `status`, `image`, `roleid`, `idSubject`, `createdby`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+	private static final String INSERT_USER = "INSERT INTO `education`.`user` (`username`, `password`, `fullname`, `gender`, `birthday`, `status`, `image`, `roleid`, `idSubject`,`idclass`, `createdby`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
+	private static final String INSERT_USER_0 = "INSERT INTO `education`.`user` (`username`, `password`, `fullname`, `gender`, `birthday`, `status`, `image`, `roleid`, `idSubject`, `createdby`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 	private static final String FIND_LAST_ID = "SELECT * FROM education.user order by createddate desc";
 	private static final String CHECK_USERNAME = "select count(username) from user where username = ? and id != ?";
 	private static final String DELETE_USER = "UPDATE `education`.`user` SET `status` = 0, `modifieddate` = CURRENT_TIMESTAMP, `modifiedby` = ? WHERE (`id` = ?)";
@@ -66,16 +68,44 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
 		String birthday = String.valueOf(userModel.getBirthday());
 		Long roleId = userModel.getRoleId();
 		Integer idSubject = userModel.getIdSubject();
+		Integer idClass = userModel.getIdClass();
 		String image = userModel.getImage();
 		String userName = userModel.getUserName();
 		String password = userModel.getPassword();
 		String idUserChange = String.valueOf(userLogin.getId());
 
-		update(UPDATE_USER,userName,password,fullName,gender,birthday,image,roleId,idSubject,idUserChange,id);
-		update(DELETE_TEACHERCLASS,id);
-		for (Integer idClass : listIdClass) {
-			update(UPDATE_TEACHERCLASS, id, idClass);
+		if (idClass != 0) {
+			update(UPDATE_USER,userName,password,fullName,gender,birthday,image,roleId,idSubject,idClass,idUserChange,id);
+		} else {
+			update(UPDATE_USER_0,userName,password,fullName,gender,birthday,image,roleId,idSubject,idUserChange,id);
 		}
+
+
+		update(DELETE_TEACHERCLASS,id);
+		for (Integer idClassTeach : listIdClass) {
+			update(UPDATE_TEACHERCLASS, id, idClassTeach);
+		}
+	}
+	@Override
+	public void update(UserModel userModel, UserModel userLogin) {
+		Long id = userModel.getId();
+		String fullName = userModel.getFullName();
+		Integer gender = userModel.getGender();
+		String birthday = String.valueOf(userModel.getBirthday());
+		Long roleId = userModel.getRoleId();
+		Integer idSubject = userModel.getIdSubject();
+		Integer idClass = userModel.getIdClass();
+		String image = userModel.getImage();
+		String userName = userModel.getUserName();
+		String password = userModel.getPassword();
+		String idUserChange = String.valueOf(userLogin.getId());
+
+		if (idClass != 0) {
+			update(UPDATE_USER,userName,password,fullName,gender,birthday,image,roleId,idSubject,idClass,idUserChange,id);
+		} else {
+			update(UPDATE_USER_0,userName,password,fullName,gender,birthday,image,roleId,idSubject,idUserChange,id);
+		}
+
 	}
 
 	@Override
@@ -95,18 +125,25 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
 		Integer gender = userModel.getGender();
 		String birthday = String.valueOf(userModel.getBirthday());
 		Long roleId = userModel.getRoleId();
+		Integer idClass = userModel.getIdClass();
 		Integer idSubject = userModel.getIdSubject();
 		String image = userModel.getImage();
 		String userName = userModel.getUserName();
 		String password = userModel.getPassword();
 		String idUserChange = String.valueOf(userLogin.getId());
 
-		update(INSERT_USER,userName,password,fullName,gender,birthday,1,image,roleId,idSubject,idUserChange);
+		if (idClass != 0){
+			update(INSERT_USER,userName,password,fullName,gender,birthday,1,image,roleId,idSubject,idClass,idUserChange);
+		} else {
+			update(INSERT_USER_0,userName,password,fullName,gender,birthday,1,image,roleId,idSubject,idUserChange);
+		}
+
+
 
 		List<UserModel> userModels = query(FIND_LAST_ID, new UserMapper());
 		Long id = userModels.get(0).getId();
-		for (Integer idClass : listIdClass) {
-			update(UPDATE_TEACHERCLASS, id, idClass);
+		for (Integer idClassTeach : listIdClass) {
+			update(UPDATE_TEACHERCLASS, id, idClassTeach);
 		}
 	}
 

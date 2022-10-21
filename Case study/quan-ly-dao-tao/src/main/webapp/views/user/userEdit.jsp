@@ -27,40 +27,27 @@
 </head>
 <body>
 <div class="container-fluid px-4">
-<c:if test="${userModel.getId() != null}">
-    <form method="post" action="/admin-user?action=edit">
-</c:if>
-<c:if test="${userModel.getId() == null}">
-    <form method="post" action="/admin-user?action=insert">
-</c:if>
+
+    <form method="post" action="/user-teacher?action=edit">
+
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item"><i class="fa-solid fa-house-chimney"></i> Trang chủ</li>
     <li class="breadcrumb-item active">Giáo viên</li>
-    <c:if test="${userModel.getId() != null}">
-        <li class="breadcrumb-item active"> Chỉnh sửa</li>
-    </c:if>
-    <c:if test="${userModel.getId() == null}">
-        <li class="breadcrumb-item active"> Thêm mới</li>
-    </c:if>
+
+        <li class="breadcrumb-item active">Thông tin</li>
 </ol>
 
 <div class="card mb-4">
-<c:if test="${userModel.getId() != null}">
+
     <div class="card-header">
         <i class="fa-solid fa-pen-to-square fa-2xl"></i>
         Chỉnh sửa thông tin
     </div>
-</c:if>
-<c:if test="${userModel.getId() == null}">
-    <div class="card-header">
-        <i class="fa-solid fa-address-card fa-2xl"></i>
-        Thêm mới giáo viên
-    </div>
-</c:if>
+
 
 <div class="row">
 <div class="containerAvar col-md-3 ">
-    <img src="${userModel.getImage()}" alt="avarta" class="imgavar img-thumbnail"
+    <img src="${USERMODEL.getImage()}" alt="avarta" class="imgavar img-thumbnail"
          id="avatar" onerror="javascript:this.src='/template/admin/avatar.png';errImage()">
 
 </div>
@@ -73,14 +60,14 @@
 <div class="form-group row">
     <label for="inputId" class="col-sm-2 col-form-label">ID</label>
     <div class="col-sm-10">
-        <input type="number" class="form-control" id="inputId" name="id" value="${userModel.getId()}"
+        <input type="number" class="form-control" id="inputId" name="id" value="${USERMODEL.getId()}"
                readonly>
     </div>
 </div>
 <div class="form-group row">
     <label for="myImg" class="col-sm-2 col-form-label">Ảnh đại diện</label>
     <div class="col-sm-10">
-        <input type="text" id="myImg" onchange="load()" class="form-control" value="${userModel.getImage()}"
+        <input type="text" id="myImg" onchange="load()" class="form-control" value="${USERMODEL.getImage()}"
                name="avatar">
         <input type="hidden" value="" id="checkImage" name="checkImage"/>
     </div>
@@ -92,45 +79,43 @@
 <div class="form-group row">
     <label for="inputName" class="col-sm-2 col-form-label">Họ và tên</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputName" name="fullName" value="${userModel.getFullName()}">
+        <input type="text" class="form-control" id="inputName" name="fullName" value="${USERMODEL.getFullName()}">
         <c:if test="${errors.get('fullName') != null}">
             <span style="color: red;font-style: italic; ">${errors.get('fullName')}</span>
         </c:if>
     </div>
 </div>
 
-<c:if test="${USERMODEL.getId() == userModel.getId() || userModel.getId() == null}">
+
     <div class="form-group row">
         <label for="inputUserName" class="col-sm-2 col-form-label">Tên đăng nhập</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="inputUserName" name="userName"
-                   value="${userModel.getUserName()}">
+                   value="${USERMODEL.getUserName()}">
             <c:if test="${errors.get('userName') != null}">
                 <span style="color: red;font-style: italic; ">${errors.get('userName')}</span>
             </c:if>
         </div>
     </div>
-</c:if>
 
-<c:if test="${USERMODEL.getId() == userModel.getId() || userModel.getId() == null}">
     <div class="form-group row">
         <label for="inputPassword" class="col-sm-2 col-form-label">Mật khẩu</label>
         <div class="col-sm-10">
             <input type="password" class="form-control" id="inputPassword" name="password"
-                   value="${userModel.getPassword()}">
+                   value="${USERMODEL.getPassword()}">
             <c:if test="${errors.get('password') != null}">
                 <span style="color: red;font-style: italic; ">${errors.get('password')}</span>
             </c:if>
         </div>
     </div>
-</c:if>
+
 
 <fieldset class="form-group">
     <div class="row">
         <legend class="col-form-label col-sm-2 pt-0">Giới tính</legend>
         <div class="col-sm-10">
             <c:choose>
-                <c:when test="${userModel.getGender() == 1}">
+                <c:when test="${USERMODEL.getGender() == 1}">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="gender" id="gridRadios1"
                                value="1" checked>
@@ -169,123 +154,21 @@
     <div class="col-sm-10">
         <div class="input-group">
             <input class="form-control" id="date" name="birthday"
-                   value="${userModel.getBirthday()}" type="text"/>
+                   value="${USERMODEL.getBirthday()}" type="text"/>
         </div>
         <c:if test="${errors.get('birthday') != null}">
             <span style="color: red;font-style: italic; ">${errors.get('birthday')}</span>
         </c:if>
     </div>
 </div>
-<div class="form-group row">
-<div class="col-sm-2">Lớp chủ nhiệm</div>
-<div class="col-sm-10">
-
-<select id="inputClass" class="dataTable-selector" name="idClass">
-    <c:forEach items="${applicationScope.listGrade}" var="item">
-        <c:choose>
-            <c:when test="${item.getId() == userModel.getIdClass()}">
-                <option selected value="${item.getId()}">${item.getGrade()}</option>
-            </c:when>
-            <c:otherwise>
-                <option value="${item.getId()}">${item.getGrade()}</option>
-            </c:otherwise>
-        </c:choose>
-    </c:forEach>
-</select>
-
-    <label class="form-check-label">
-        Không chủ nhiệm
-    </label>
-    <input class="form-check-input" type="checkbox" name="checkIdClass"
-           style="width: 30px; height: 30px;margin-left: 10px" value="0"
-           <c:if test="${userModel.getIdClass() == null || userModel.getIdClass() == ''}">checked</c:if>
-    >
-            <c:if test="${errors.get('grade') != null}">
-                <span style="color: red;font-style: italic; ">${errors.get('grade')}</span>
-            </c:if>
-            </div>
-            </div>
-
-            <div class="form-group row">
-            <div class="col-sm-2">Quyền truy cập</div>
-            <div class="col-sm-10">
-            <select id="inputRole" class="dataTable-selector" name="role">
-            <c:forEach items="${applicationScope.listRole}" var="item">
-                <c:choose>
-                    <c:when test="${item.getId() == userModel.getRoleId()}">
-                        <option selected value="${item.getId()}">${item.getName()}</option>
-                    </c:when>
-                    <c:otherwise>
-                        <option value="${item.getId()}">${item.getName()}</option>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-            </select>
-            <c:if test="${errors.get('role') != null}">
-                <span style="color: red;font-style: italic; ">${errors.get('role')}</span>
-            </c:if>
-            </div>
-            </div>
-
-
-            <div class="form-group row">
-            <div class="col-sm-2">Môn dạy</div>
-            <div class="col-sm-10">
-            <select id="inputSubject" class="dataTable-selector" name="subject">
-            <c:forEach items="${applicationScope.listSubject}" var="item">
-                <c:choose>
-                    <c:when test="${item.getId() == userModel.getIdSubject()}">
-                        <option selected value="${item.getId()}">${item.getSubject()}</option>
-                    </c:when>
-                    <c:otherwise>
-                        <option value="${item.getId()}">${item.getSubject()}</option>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-            </select>
-            <c:if test="${errors.get('subject') != null}">
-                <span style="color: red;font-style: italic; ">${errors.get('subject')}</span>
-            </c:if>
-            </div>
-            </div>
-
-            <div class="form-group row">
-            <div class="col-sm-2">Lớp dạy</div>
-            <div class="col-sm-10">
-
-            <c:forEach items="${applicationScope.listGrade}" var="gradeModel">
-                <div class="form-check form-check-inline col-sm-2">
-                    <input class="form-check-input" type="checkbox" name="teacherClass"
-                           style="width: 30px; height: 30px" value="${gradeModel.getId()}"
-                    <c:forEach items="${requestScope.listIdClassTeach}" var="item">
-                           <c:if test="${gradeModel.getId() == item}">checked</c:if>
-                    </c:forEach>
-                    >
-                    <label class="form-check-label">
-                        <c:out value="${gradeModel.getGrade()}"/>
-                    </label>
-                </div>
-            </c:forEach>
-
-
-            <c:if test="${errors.get('teacherClass') != null}">
-                <span style="color: red;font-style: italic; ">${errors.get('teacherClass')}</span>
-            </c:if>
-            </div>
-            </div>
 
 
             <div class="form-group row">
             <div class="col-sm-10 btn-holder">
-            <c:if test="${userModel.getId() != null}">
+
                 <button type="button" class="btne btn-2 hover-slide-down"
                         onclick="document.getElementById('id01').style.display='block'"><span>Cập nhật</span></button>
-            </c:if>
-            <c:if test="${userModel.getId() == null}">
-                <button type="button" class="btne btn-2 hover-slide-down"
-                        onclick="document.getElementById('id01').style.display='block'"><span>Lưu thông tin</span>
-                </button>
-            </c:if>
+
 
             </div>
             </div>
@@ -296,14 +179,9 @@
             <%-- model xac nhan--%>
             <div id="id01" class="modal">
             <div class="containerCon">
-            <c:if test="${userModel.getId() != null}">
                 <h1>Lưu thay đổi</h1>
                 <p>Bạn có chắc chắn sửa đổi?</p>
-            </c:if>
-            <c:if test="${userModel.getId() == null}">
-                <h1>Lưu thông tin</h1>
-                <p>Bạn có chắc chắn muốn lưu thông tin?</p>
-            </c:if>
+
             <div class="clearfix">
             <button type="button" onclick="document.getElementById('id01').style.display='none'"
             class="cancelbtn btnModel">Hủy bỏ</button>

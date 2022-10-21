@@ -22,29 +22,42 @@
     <link rel="stylesheet" href="/template/web/carousel/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
     <link rel="stylesheet" href="/template/web/carousel/css/style.css">
+    <%--  font them sua xoa --%>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <script src="<c:url value='https://use.fontawesome.com/releases/v6.1.0/js/all.js'  />" crossorigin="anonymous"></script>
+
+    <%--link phân trang--%>
+    <link rel="stylesheet" href="<c:url value='https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css' />"  />
+    <script src="<c:url value='https://code.jquery.com/jquery-3.3.1.min.js'/>"></script>
+    <script src="<c:url value='https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js'/>"></script>
+    <script src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script>
+
+
 </head>
 <body>
     <!-- header -->
     <%@ include file="/common/web/header.jsp" %>
     <!-- header -->
-
-    <div class="container">
+    <div id="layoutSidenav">
+        <div class="container">
         <dec:body/>
-    </div>
+         </div>
 
     <!-- footer -->
     <%@ include file="/common/web/footer.jsp" %>
     <!-- footer -->
 
+    </div>
+
     <!-- Bootstrap core JS-->
     <script type="text/javascript" src="<c:url value='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' />"></script>
-    <!-- Core theme JS-->
     <script type="text/javascript" src="<c:url value='/template/web/js/scripts.js' />"></script>
-<%--caro--%>
+<%--caro chạy hình--%>
     <script src="/template/web/carousel/js/jquery.min.js"></script>
     <script src="/template/web/carousel/js/popper.js"></script>
     <script src="/template/web/carousel/js/bootstrap.min.js"></script>
     <script src="/template/web/carousel/js/owl.carousel.min.js"></script>
     <script src="/template/web/carousel/js/main.js"></script>
+
 </body>
 </html>

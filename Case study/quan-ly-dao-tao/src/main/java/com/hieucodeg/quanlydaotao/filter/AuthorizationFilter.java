@@ -32,10 +32,17 @@ public class AuthorizationFilter implements Filter {
                 if (iRodeDAO.checkRole(model.getRoleId()).equals("ADMIN")) {
                     filterChain.doFilter(servletRequest, servletResponse);
                 } else if (iRodeDAO.checkRole(model.getRoleId()).equals("USER")) {
-                    response.sendRedirect(request.getContextPath()+"/dang-nhap?action=login&message=not_permission&alert=danger");
+                    response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=not_permission&alert=danger");
                 }
             } else {
-                response.sendRedirect(request.getContextPath()+"/dang-nhap?action=login&message=not_login&alert=danger");
+                response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=not_login&alert=danger");
+            }
+        } else if (url.startsWith("/user")) {
+            UserModel model = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+            if (model != null) {
+                filterChain.doFilter(servletRequest, servletResponse);
+            } else {
+                response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=not_login&alert=danger");
             }
         } else {
             filterChain.doFilter(servletRequest, servletResponse);

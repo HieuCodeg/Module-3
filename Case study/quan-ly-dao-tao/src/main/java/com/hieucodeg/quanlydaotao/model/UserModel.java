@@ -13,6 +13,15 @@ public class UserModel extends AbstractModel<UserModel>{
     private Date birthday;
     private Integer idSubject;
     private String image;
+    private Integer idClass;
+
+    public Integer getIdClass() {
+        return idClass;
+    }
+
+    public void setIdClass(Integer idClass) {
+        this.idClass = idClass;
+    }
 
     public String getImage() {
         return image;

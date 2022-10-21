@@ -14,24 +14,21 @@
 <head>
     <title>Học sinh</title>
 </head>
-<body>
-<div class="container">
-    <form action="/admin-home" id="formSubmit" method="post">
+<body class="sb-nav-fixed">
+
+<div class="container-fluid px-4">
+    <form action="/user-student" id="formSubmit" method="post">
 
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><i class="fa-solid fa-house-chimney"></i> Trang chủ</li>
-            <li class="breadcrumb-item active">  Học sinh</li>
+            <li class="breadcrumb-item"><i class="fa-solid fa-house-chimney"></i>Trang chủ</li>
+            <li class="breadcrumb-item active">Học sinh</li>
         </ol>
 
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
                 <span style="font-size: large">Danh sách học sinh toàn trường</span>
-                <span>
-                <a class="btn btn-secondary float-end zoom" data-toggle="tooltip" data-placement="top" title="Thêm mới" href='/admin-home?action=insert' style="background-color: #1b72cf">
-                    <i class="fa-solid fa-user-plus" ></i>
-                </a>
-                </span>
+
             </div>
 
 
@@ -97,45 +94,29 @@
                                 </c:forEach>
 
                                 <td><c:out value="${student.email}"/></td>
-                                <td>
-                                    <a class="btn btn-secondary zoom" data-toggle="tooltip" data-placement="top" id="btnEdit"
-                                       title="Chỉnh sửa" href='/admin-home?action=edit&id=${student.id}' style="background-color: #198754">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a class="btn btn-secondary  zoom" data-toggle="tooltip" data-placement="top"
-                                       title="Xóa" style="background-color: #da383c; color: white" onclick="document.getElementById('id01').style.display='block'">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                        <%-- model xac nhan--%>
-                                    <div id="id01" class="modal">
-                                        <div class="containerCon">
-                                            <h1>Lưu thay đổi</h1>
-                                            <p>Bạn có chắc chắn muốn xóa?</p>
-                                            <div class="clearfix">
-                                                <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                                                        class="cancelbtn btnModel">Hủy bỏ</button>
-                                                <a href='/admin-home?action=delete&id=${student.id}'>
-                                                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                                                            class="deletebtn btnModel">Chấp nhận</button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <c:if test="${student.getIdGrade() == USERMODEL.getIdClass()}">
+                                    <td>
+                                        <a class="btn btn-secondary zoom" data-toggle="tooltip" data-placement="top" id="btnEdit"
+                                           title="Chỉnh sửa" href='/user-student?action=edit&id=${student.id}' style="background-color: #198754">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                    </td>
+                                </c:if>
 
-                                </td>
                             </tr>
                         </c:forEach>
 
                         </tbody>
                     </table>
+                    <ul class="pagination float-end" id="pagination"></ul>
                     <div class="text-nowrap">
                         Từ ${(studentModel.getPage() * studentModel.getVisiblePage()) - studentModel.getVisiblePage() + 1}
                         đến ${(studentModel.getPage() * studentModel.getVisiblePage()) > studentModel.getTotalItem()? studentModel.getTotalItem(): (studentModel.getPage() * studentModel.getVisiblePage())}
                         trong ${studentModel.getTotalItem()} kết quả
                     </div>
-                    <ul class="pagination float-end" id="pagination"></ul>
+
                     <input type="hidden" value="${studentModel.page}" id="page" name="page"/>
-                    <input type="hidden" value="infomation" id="action" name="action"/>
+                    <input type="hidden" value="information" id="action" name="action"/>
                     <input type="hidden" value="${studentModel.getSortName()}" id="sortName" name="sortName"/>
                     <input type="hidden" value=" ${studentModel.getSortBy()}" id="sortBy" name="sortBy"/>
 

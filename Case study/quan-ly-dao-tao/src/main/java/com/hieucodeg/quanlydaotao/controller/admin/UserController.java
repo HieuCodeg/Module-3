@@ -175,10 +175,23 @@ public class UserController extends HttpServlet {
             String birthday = req.getParameter("birthday");
             Long roleId = Long.valueOf(req.getParameter("role"));
             Integer idSubject = Integer.valueOf(req.getParameter("subject"));
-
             String listClassTeach[]  = req.getParameterValues("teacherClass");
 
             userModel = iUserDAO.findUserEdit(id);
+
+
+            String checkIdClass = req.getParameter("checkIdClass");
+            if (checkIdClass == "" || checkIdClass == null) {
+                List<ClassModel> listClass = (List<ClassModel>) this.getServletContext().getAttribute("listGrade");
+                Integer idClass = Integer.valueOf(req.getParameter("idClass"));
+                if (idClass < 1 || idClass > listClass.size() -1) {
+                    errors.put("grade","Mã lớp không hợp lệ");
+                } else {
+                    userModel.setIdClass(idClass);
+                }
+            } else {
+                userModel.setIdClass(0);
+            }
 
             String image;
             String checkImage = req.getParameter("checkImage");
@@ -289,6 +302,19 @@ public class UserController extends HttpServlet {
             Integer idSubject = Integer.valueOf(req.getParameter("subject"));
 
             String listClassTeach[]  = req.getParameterValues("teacherClass");
+
+            String checkIdClass = req.getParameter("checkIdClass");
+            if (checkIdClass == "" || checkIdClass == null) {
+                List<ClassModel> listClass = (List<ClassModel>) this.getServletContext().getAttribute("listGrade");
+                Integer idClass = Integer.valueOf(req.getParameter("idClass"));
+                if (idClass < 1 || idClass > listClass.size() -1) {
+                    errors.put("grade","Mã lớp không hợp lệ");
+                } else {
+                    userModel.setIdClass(idClass);
+                }
+            } else {
+                userModel.setIdClass(0);
+            }
 
             String image;
             String checkImage = req.getParameter("checkImage");

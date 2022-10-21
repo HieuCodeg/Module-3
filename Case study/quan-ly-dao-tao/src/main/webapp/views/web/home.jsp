@@ -77,7 +77,7 @@
                 <h2 class="card-title text-center">HỌC SINH</h2>
                 <p class="card-text">Chương trình được thiết kế dành cho người không biết gì về ngành CNTT và Lập trình, bắt đầu với những việc nhỏ nhất như gõ bàn phím, cài đặt phần mềm, tìm kiếm thông tin.</p>
             </div>
-            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">Xem thêm</a></div>
+            <div class="card-footer"><a class="btn btn-primary btn-sm" href="/user-student?action=information">Xem thêm</a></div>
         </div>
     </div>
     <div class="col-md-4 mb-5">
@@ -86,7 +86,7 @@
                 <h2 class="card-title text-center">GIÁO VIÊN</h2>
                 <p class="card-text">Thấu hiểu được tình trạng đó, các nhà sáng lập của CodeGym – vốn xuất thân là các lập trình viên nhiều năm kinh nghiệm, giảng viên, chủ doanh nghiệp phần mềm có tâm huyết</p>
             </div>
-            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">Xem thêm</a></div>
+            <div class="card-footer"><a class="btn btn-primary btn-sm" href="/user-teacher">Xem thêm</a></div>
         </div>
     </div>
     <div class="col-md-4 mb-5">
