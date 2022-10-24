@@ -268,57 +268,88 @@ alter table sanpham add constraint check_dvt check(
 alter table sanpham add constraint check_gia check( GIA > 500);
 alter table khachhang add constraint check_ngayGN check( NGDK > NGSINH);
  -- cau 11
---  CREATE TRIGGER UPDATE_KH_C11
--- ON KHACHHANG
--- FOR UPDATE
--- AS
---  DECLARE @NGDK SMALLDATETIME, 
---    @NGHD SMALLDATETIME
-
---  SELECT @NGDK=NGDK
---  FROM  INSERTED
---  
---  IF(@NGDK>ANY(SELECT NGHD
---     FROM  HOADON A, INSERTED I
---     WHERE A.MAKH=I.MAKH))
---   BEGIN
---    ROLLBACK TRAN
---    PRINT 'ERROR!NGDK PHAI NHO HON NGHD'
---   END
---  ELSE
---   PRINT' SUCCESSFUL'
- -------
  delimiter //
- create trigger update_khachhang
+ create trigger update_khachhang_C11
  before update
  on baitapcosodulieu.khachhang 
  for each row 
-
  begin
-    if (new.ngdk < (select nghd from hoadon where new.makh = hoadon.makh)) then
+    if (new.ngdk > any(select nghd from hoadon where new.makh = hoadon.makh)) then
 		set new.ngdk = old.ngdk;
+        SIGNAL SQLSTATE '02000' SET MESSAGE_TEXT = 'ERROR! NGDK CUA KH PHAI NHO HON NGHD';
 	end if;
  end //
- 
- 
--- CREATE TRIGGER HD_C11
--- ON HOADON
--- FOR INSERT,UPDATE
--- AS
---  DECLARE @NGDK SMALLDATETIME, 
---    @NGHD SMALLDATETIME
+drop trigger update_khachhang_C11;
 
---  SELECT @NGDK=NGDK,@NGHD=NGHD
---  FROM  INSERTED I, KHACHHANG A
---  WHERE I.MAKH=A.MAKH
+delimiter //
+ create trigger update_hoadon_C11
+ before update
+ on baitapcosodulieu.hoadon 
+ for each row 
+ begin
+    if (new.nghd < (select ngdk from khachhang where new.makh = khachhang.makh)) then
+		set new.nghd = old.nghd;
+        SIGNAL SQLSTATE '02000' SET MESSAGE_TEXT = 'ERROR!NGHD PHAI LON HON NGDK CUA KH';
+	end if;
+ end //
+ drop trigger update_hoadon_C11;
+ 
+ delimiter //
+ create trigger insert_hoadon_C11
+ before insert
+ on baitapcosodulieu.hoadon 
+ for each row 
+ begin
+    if (new.nghd < (select ngdk from khachhang where new.makh = khachhang.makh)) then
+        SIGNAL SQLSTATE '02000' SET MESSAGE_TEXT = 'ERROR!NGHD PHAI LON HON NGDK';
+	end if;
+ end //
+ drop trigger insert_hoadon_C11;
+ -- cau 12
+ delimiter //
+ create trigger update_nhanvien_C12
+ before update
+ on baitapcosodulieu.nhanvien
+ for each row 
+ begin
+    if (new.ngvl > any(select nghd from hoadon where new.manv = hoadon.manv)) then
+		set new.ngvl = old.ngvl;
+        SIGNAL SQLSTATE '02000' SET MESSAGE_TEXT = 'Error! NGVL PHAI BE HON NGHD CUA NV';
+	end if;
+ end //
+drop trigger update_nhanvien_C12;
 
---  IF @NGHD<@NGDK
---   BEGIN
---    ROLLBACK TRAN
---    PRINT 'ERROR!NGHD PHAI LON HON NGDK'
---   END
---  ELSE
---   PRINT' SUCCESSFUL'
+delimiter //
+ create trigger update_hoadon_C11_12
+ before update
+ on baitapcosodulieu.hoadon 
+ for each row 
+ begin
+    if (new.nghd < (select ngdk from khachhang where new.makh = khachhang.makh)) then
+		set new.nghd = old.nghd;
+        SIGNAL SQLSTATE '02000' SET MESSAGE_TEXT = 'ERROR!NGHD PHAI LON HON NGDK CUA KH';
+	end if;
+	if (new.nghd < (select ngvl from nhanvien where new.manv = nhanvien.manv)) then
+		set new.nghd = old.nghd;
+        SIGNAL SQLSTATE '02000' SET MESSAGE_TEXT = 'Error! NGHD PHAI LON HON NGVL CUA NV';
+	end if;
+ end //
+drop trigger update_hoadon_C11_12;
+
+delimiter //
+ create trigger insert_hoadon_C11_C12
+ before insert
+ on baitapcosodulieu.hoadon 
+ for each row 
+ begin
+    if (new.nghd < (select ngdk from khachhang where new.makh = khachhang.makh)) then
+        SIGNAL SQLSTATE '02000' SET MESSAGE_TEXT = 'ERROR!NGHD PHAI LON HON NGDK';
+	end if;
+    if (new.nghd < (select ngvl from nhanvien where new.manv = nhanvien.manv)) then
+        SIGNAL SQLSTATE '02000' SET MESSAGE_TEXT = 'Error! NGHD PHAI LON HON NGVL CUA NV';
+	end if;
+ end //
+ drop trigger insert_hoadon_C11_C12;
 
 
 

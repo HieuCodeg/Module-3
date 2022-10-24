@@ -26,6 +26,15 @@ dependencies {
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
 
+    // https://mvnrepository.com/artifact/com.google.apis/google-api-services-drive
+    implementation group: 'com.google.apis', name: 'google-api-services-drive', version: 'v3-rev197-1.25.0'
+// https://mvnrepository.com/artifact/com.google.api-client/google-api-client
+    implementation group: 'com.google.api-client', name: 'google-api-client', version: '1.32.1'
+
+    // https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-jetty
+    implementation group: 'com.google.oauth-client', name: 'google-oauth-client-jetty', version: '1.32.1'
+
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }

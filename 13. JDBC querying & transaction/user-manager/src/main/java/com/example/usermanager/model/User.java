@@ -1,10 +1,22 @@
 package com.example.usermanager.model;
 
+import java.util.Date;
+
 public class User {
     protected int id;
     protected String name;
     protected String email;
     protected String country;
+
+    protected Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public User() {}
 
@@ -13,8 +25,17 @@ public class User {
         this.name = name;
         this.email = email;
         this.country = country;
+
     }
 
+    public User(int id, String name, String email, String country, Date date) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.country = country;
+        this.date = date;
+    }
     public User(int id, String name, String email, String country) {
         super();
         this.id = id;

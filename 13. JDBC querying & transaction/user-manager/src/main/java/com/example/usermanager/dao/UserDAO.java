@@ -379,7 +379,8 @@ public class UserDAO implements IUserDAO {
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 String country = rs.getString("country");
-                users.add(new User(id, name, email, country));
+                Date date = rs.getDate("date");
+                users.add(new User(id, name, email, country,date));
             }
             System.out.println(callableStatement);
         } catch (SQLException e) {

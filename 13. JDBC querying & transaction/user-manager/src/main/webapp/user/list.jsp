@@ -16,7 +16,7 @@
 <center>
     <h1>User Management</h1>
     <h2>
-        <a href="/users?action=create">Add New User</a>
+        <jsp:include page="" ></jsp:include>        <a href="/users?action=create">Add New User</a>
     </h2>
 </center>
 <div align="center">
@@ -33,6 +33,7 @@
             <th>Email</th>
             <th>Country</th>
             <th>Actions</th>
+            <th>Date</th>
         </tr>
         <c:forEach var="user" items="${listUser}">
             <tr>
@@ -40,6 +41,7 @@
                 <td><c:out value="${user.name}"/></td>
                 <td><c:out value="${user.email}"/></td>
                 <td><c:out value="${user.country}"/></td>
+                <td><c:out value="${user.date}"/></td>
                 <td>
                     <a href="/users?action=edit&id=${user.id}">Edit</a>
                     <a href="/users?action=delete&id=${user.id}">Delete</a>
